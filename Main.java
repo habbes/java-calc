@@ -2,8 +2,9 @@ import java.util.*;
 
 class Main {
   public static void main(String[] args) {
-    System.out.println("Welcome to the calculator. "
-        + "Enter an expression and press Return at the prompt:");
+    System.out.println("Welcome to the calculator.\n"
+        + "Enter an expression at the prompt and press return to calculate.\n"
+        + "Enter 'exit' to terminate.");
 
     Scanner console = new Scanner(System.in);
     Calculator calculator = new Calculator();
