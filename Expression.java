@@ -39,5 +39,5 @@ abstract public class Expression {
   /**
    * computes and returns the value of this expression
    */
-  abstract public int getValue();
+  abstract public int getValue(SymbolTable symbols);
 }

@@ -16,7 +16,24 @@ public class ExpressionFactory {
         throw new IllegalArgumentException("Unknown expression symbol " + symbol);
     }
 
+    public static Expression createAssignment(String varName, Expression value) {
+        return new AssignmentExpression(varName, value);
+    }
+
+    public static Expression createSingleValue(String valueStr) {
+        try {
+            return createNumber(valueStr);
+        }
+        catch (Exception ex) {
+            return createVariable(valueStr);
+        }
+    }
+
     public static Expression createNumber(String numStr) {
         return new NumberExpression(Integer.parseInt(numStr));
+    }
+
+    public static Expression createVariable(String name) {
+        return new VariableExpression(name);
     }
 }

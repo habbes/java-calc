@@ -3,8 +3,8 @@ public class PlusExpression extends BinaryExpression {
         super(left, right);
     }
 
-    public int getValue() {
-        return getLeft().getValue() + getRight().getValue();
+    public int getValue(SymbolTable symbols) {
+        return getLeft().getValue(symbols) + getRight().getValue(symbols);
     }
 
     public String toString() {

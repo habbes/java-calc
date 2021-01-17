@@ -6,7 +6,7 @@ public class NumberExpression extends Expression {
         this.value = value;
     }
 
-    public int getValue() {
+    public int getValue(SymbolTable symbols) {
         return value;
     }
 
