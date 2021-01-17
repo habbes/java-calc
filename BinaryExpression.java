@@ -21,8 +21,17 @@ abstract public class BinaryExpression extends Expression {
     }
 
     public int getValue(SymbolTable symbols) {
+        // all binary operations have a left and right children,
+        // they all evaluate the children then apply the
+        // operation to the values of the children.
+        // Since this is common for all binary operations,
+        // it's implemented here in base class to avoid
+        // duplicating code
         int left = getLeft().getValue(symbols);
         int right = getRight().getValue(symbols);
+
+        // this will call the operate method implemented
+        // by the child class, e.g. PlusExpression.operate(left, right)
         return operate(left, right);
     }
 
@@ -30,7 +39,24 @@ abstract public class BinaryExpression extends Expression {
         return getLeft().toString() + " " + getLabel() + " " + getRight().toString();
     }
     
+    // The following abstract methods should
+    // be implemented by the child classes
+    // e.g. PlusOperation's operate() will implement
+    // a simple addition of the two operands
 
+    /**
+     * computes the binary operation with the
+     * given operands
+     * @param left
+     * @param right
+     * @return
+     */
     abstract int operate(int left, int right);
+
+    /**
+     * Returns the sign symbol of this operation
+     * for display purposes, e.g. '+', '-'
+     * @return
+     */
     abstract String getLabel();
 }

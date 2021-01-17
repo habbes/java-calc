@@ -1,3 +1,6 @@
+/**
+ * Represents an expression that subtracts its operands
+ */
 public class MinusExpression extends BinaryExpression {
     public MinusExpression(Expression left, Expression right) {
         super(left, right);

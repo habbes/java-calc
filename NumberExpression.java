@@ -1,3 +1,6 @@
+/**
+ * An expression representing an integer number
+ */
 public class NumberExpression extends Expression {
     int value;
 

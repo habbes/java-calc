@@ -1,3 +1,6 @@
+/**
+ * Represents an expression that adds its operands
+ */
 public class PlusExpression extends BinaryExpression {
     public PlusExpression(Expression left, Expression right) {
         super(left, right);

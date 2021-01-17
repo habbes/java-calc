@@ -1,3 +1,7 @@
+/**
+ * Represents an expression that assigns a value
+ * to a variable
+ */
 public class AssignmentExpression extends Expression {
     String varName;
     

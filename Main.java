@@ -21,5 +21,7 @@ class Main {
         
         System.out.println(value);
     }
+
+    console.close();
   }
 }

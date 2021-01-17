@@ -1,3 +1,7 @@
+/**
+ * Contains helper methods for creating
+ * different kinds of expressions
+ */
 public class ExpressionFactory {
 
     public static Expression createBinary(String symbol, Expression left, Expression right) {

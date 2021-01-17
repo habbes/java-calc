@@ -1,3 +1,6 @@
+/**
+ * An expression containing a variable.
+ */
 class VariableExpression extends Expression {
     String name;
 

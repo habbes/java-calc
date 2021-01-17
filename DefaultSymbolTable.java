@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * Default implementation of a SymbolTable
+ */
 public class DefaultSymbolTable implements SymbolTable {
     Map<String, Integer> symbols = new HashMap<>();
 

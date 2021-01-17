@@ -1,3 +1,6 @@
+/**
+ * Represents an expression that divides its operands
+ */
 public class DivideExpression extends BinaryExpression {
     public DivideExpression(Expression left, Expression right) {
         super(left, right);

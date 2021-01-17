@@ -38,6 +38,10 @@ abstract public class Expression {
 
   /**
    * computes and returns the value of this expression
+   * @param symbols symbol table mapping variables
+   * to their values. This can be updated with
+   * new variable-value mappings when the expression is evaluated.
+   * @return the computed value of the expression
    */
   abstract public int getValue(SymbolTable symbols);
 }
