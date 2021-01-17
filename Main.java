@@ -7,18 +7,32 @@ class Main {
     //l.add(1);
     //l.add(2);
 
-    // Expression expr = new Expression("-",
-    //   new Expression("+",
-    //     new Expression("+",
-    //       new Expression("1"),
-    //       new Expression("2")),
-    //     new Expression("5")),
-    //   new Expression("4")
+    // Expression expr = new MinusExpression(
+    //   new PlusExpression(
+    //     new PlusExpression(
+    //       new NumberExpression(1),
+    //       new NumberExpression(2)),
+    //     new NumberExpression(5)),
+    //   new NumberExpression(4)
     // );
 
     // System.out.println(expr);
     // int value = expr.getValue();
     // System.out.println(value);
+    
+    // polymorphism
+    // Expression expr = new MinusExpression(
+    //     new NumberExpression(10),
+    //     new NumberExpression(20));
+    // System.out.println(expr);
+    // System.out.println(expr.getValue());
+    // Expression expr2 = expr;
+    // PlusExpression expr3 = (PlusExpression) expr;
+
+    // List<Integer> myList = new ArrayList<>();
+    // List<Integer> otherList = new LinkedList<>();
+    
+
     Scanner console = new Scanner(System.in);
     System.out.println("Welcome to our calculator:");
     while (true) {
@@ -30,12 +44,17 @@ class Main {
             break;
         }
 
-        Expression expr = parse(input);
+        Expression expression = parse(input);
         // System.out.println(expr);
-        System.out.println(expr.getValue());
+        System.out.println(expression.getValue());
 
         
     }
+  }
+
+  public static void printValue(Expression expr)
+  {
+      System.out.println(expr.getValue());
   }
 
   public static Expression parse(String code) {
@@ -43,24 +62,24 @@ class Main {
     int pos = 0;
     // "1 + 2 - 3";
     Expression root = null;
+    
     while (pos < tokens.length)
     {
       String curToken = tokens[pos];
-      if (curToken.equals("+") || curToken.equals("-")) {
+      if (curToken.equals("+") || curToken.equals("-")
+      || curToken.equals("*") || curToken.equals("/")) {
         ++pos;
         String nextToken = tokens[pos];
-        Expression rightChild = new Expression(nextToken);
+        Expression rightChild = ExpressionFactory.createNumber(nextToken);
 
         // new Exp(+, 1, 2)
         // new Exp(-, new Exp(+ 1, 2), 3)
-        Expression operatorExp = new Expression(curToken, 
-          root, rightChild);
-        
+        Expression operatorExp = ExpressionFactory.createBinary(curToken, root, rightChild);
         root = operatorExp;
         pos++;
       }
       else if (root == null){
-        root = new Expression(curToken);
+        root = ExpressionFactory.createNumber(curToken);
         pos++;
       }
       else {

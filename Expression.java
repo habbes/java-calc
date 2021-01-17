@@ -1,49 +1,43 @@
 import java.util.*;
 
+/*
 
-public class Expression {
-  String label;
+An abstract class cannot be instantiated, i.e.
+you cannot do new Expression()
+An abstract class contains some common functionality
+that is inherited by other child classes (like NumberExpression,
+PlusExpression, etc.)
+
+But it lacks the implementation of some methods (e.g. getValue())
+which should be implemented by each "concrete" child class
+
+*/
+
+/**
+ * represents an expression tree
+ */
+abstract public class Expression {
   List<Expression> children = new ArrayList<>();
 
-  public Expression(String label) {
-    this.label = label;
-  }
-
-  public Expression(String label, Expression... children) {
-    this.label = label;
+  public Expression(Expression... children) {
     for (Expression child: children) {
       this.children.add(child);
     }
   }
 
-  public int getValue() {
-    if (label.equals("-")) {
-      Expression left =  children.get(0);
-      Expression right = children.get(1);
-      return left.getValue() - right.getValue();
-    }
-    if (label.equals("+")) {
-      Expression left =  children.get(0);
-      Expression right = children.get(1);
-      return left.getValue() + right.getValue();
-    }
+  
+  /*
+    The getValue() method below is marked abstract
+    and does not have a method body/implementation.
 
-    // if neither + nor -, we assume label
-    // contans an integer number
-    int value = Integer.parseInt(label);
-    return value;
-  }
+    This is because we don't know what getValue() should do,
+    it depends on the actual type of expression we're dealing with.
+    So each concrete child class of Expression will provide its
+    own implementation for this method.
+  */
 
-  public String toString() {
-    String s = label;
-    if (children.size() > 0) {
-      s += "( ";
-      for (Expression child: children) {
-        s += child.toString() + " ";
-      }
-      s += ")";
-    }
-
-    return s;
-  }
+  /**
+   * computes and returns the value of this expression
+   */
+  abstract public int getValue();
 }
