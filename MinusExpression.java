@@ -3,11 +3,11 @@ public class MinusExpression extends BinaryExpression {
         super(left, right);
     }
 
-    public int getValue(SymbolTable symbols) {
-        return getLeft().getValue(symbols) - getRight().getValue(symbols);
+    public int operate(int left, int right) {
+        return left - right;
     }
 
-    public String toString() {
-        return getLeft().toString() + " - " + getRight().toString();
+    public String getLabel() {
+        return "-";
     }
 }

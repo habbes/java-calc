@@ -19,4 +19,18 @@ abstract public class BinaryExpression extends Expression {
     public Expression getRight() {
         return children.get(1);
     }
+
+    public int getValue(SymbolTable symbols) {
+        int left = getLeft().getValue(symbols);
+        int right = getRight().getValue(symbols);
+        return operate(left, right);
+    }
+
+    public String toString() {
+        return getLeft().toString() + " " + getLabel() + " " + getRight().toString();
+    }
+    
+
+    abstract int operate(int left, int right);
+    abstract String getLabel();
 }
