@@ -17,9 +17,13 @@ class Main {
             break;
         }
         
-        int value = calculator.evaluate(input);
-        
-        System.out.println(value);
+        try {
+          int value = calculator.evaluate(input);
+          System.out.println(value);
+        }
+        catch (Exception e) {
+          System.out.println("Error occurred: " + e.getMessage());
+        }
     }
 
     console.close();

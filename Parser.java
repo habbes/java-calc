@@ -70,9 +70,7 @@ public class Parser {
                 pos++;
             }
             else {
-                // TODO we should throw an exception here
-                System.out.println("Invalid token " + curToken);
-                pos++;
+                throw new RuntimeException("Invalid syntax!");
             }
 
         
